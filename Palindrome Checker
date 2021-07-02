@@ -1,0 +1,29 @@
+function palindrome(str) {
+
+let newStr = str;
+//Regex recognizes all non-word characters including underscore. Global flag.
+let notALetter = /[\W_]/g;
+
+//This line puts all letters in lower case and deletes all non-word chars.
+newStr = newStr.toLowerCase().replace(notALetter, "");
+
+//This line makes an easily manipulable array of characters..
+let arr = newStr.split("");
+let half = (arr.length / 2);
+
+
+for (let i = 0; i<half; i++) {
+	console.log(arr[i] + " and " + arr[arr.length-i-1]);
+	//This conditional compares the first and the last characters, followed by second and second-to-last, etc.
+	if (arr[i] !== arr[arr.length-i-1]) {
+		return false;
+	}
+}
+return true;
+
+}
+
+
+
+
+console.log(palindrome("eghztbuzhge"));
